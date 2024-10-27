@@ -6,11 +6,11 @@ STATS_UPTIME=$(curl --connect-timeout 2 --max-time 30 --silent --noproxy '*' htt
 
 uptime=`echo $STATS_UPTIME | jq -r '.Seconds'`
 #uptime=$STATS_UPTIME.Seconds
-hs=[1,1,1,1,1,1,1,1,1,1,1,1,1,1]
-temp=[60,60,60,60,60,60,60,60,60,60,60,60,60,60]
-fan=[25,25,25,25,25,25,25,25,25,25,25,25,25,25]
+hs=[1]
+temp=[1]
+fan=[1]
 ver="1.0.0"
-bus_numbers=[3,7,null,null,null,null,null,null,null,null,null,null,null,null]
+bus_numbers=[null]
 
 khs=14
 stats=$(jq -n --argjson uptime "$uptime" --argjson hs "$hs" --argjson temp "$temp" --argjson fan "$fan" --arg algo "RainbowMiner" --arg ver "$ver" --argjson bus_numbers "$bus_numbers" '{$hs, $temp, $fan, $uptime, $algo, $ver, $bus_numbers}')
